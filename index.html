@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>home page </title>
+  <style>
+    
+    .error { color: red; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <h1 style="background-color:rgb(110, 241, 50);">Welcome To News Portal</h1>
+  <img src="home image.jpeg" alt="Girl in a jacket" width="" height="">
+  <p style="background-image: url('images.jpeg');">
+  <form id="myForm">
+    <label ="name" style="background-color: blanchedalmond;">Full Name:</label>
+    <input type="text" id="name" name="name">
+    <span id="nameError" class="error"></span><br><br>
+
+    <label for="email" style="background-color: blanchedalmond;">    Email ID :</label>
+    <input type="email" id="email" name="email">
+    <span id="emailError" class="error"></span><br><br>
+
+    <label for="password" style="background-color: blanchedalmond;">Password:</label>
+    <input type="password" id="password" name="password">
+    <span id="passwordError" class="error"></span><br><br>
+
+    <label for="age" style="background-color: blanchedalmond;"> Your Age:</label>
+    <input type="number" id="age" name="age">
+    <span id="ageError" class="error"></span><br><br>
+ 
+
+    <button type="button" onclick="validateForm()">Submit</button>
+  </form>
+  <script>
+    function validateForm() {
+      // Clear previous error messages
+      document.getElementById("nameError").textContent = "";
+      document.getElementById("emailError").textContent = "";
+      document.getElementById("passwordError").textContent = "";
+      document.getElementById("ageError").textContent = "";
+
+      let isValid = true;
+
+      // Name validation
+      const name = document.getElementById("name").value.trim();
+      if (name === "") {
+        document.getElementById("nameError").textContent = "Name is required.";
+        isValid = false;
+      }
+
+      // Email validation
+      const email = document.getElementById("email").value.trim();
+      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (email === "") {
+        document.getElementById("emailError").textContent = "Email is required.";
+        isValid = false;
+      } else if (!emailPattern.test(email)) {
+        document.getElementById("emailError").textContent = "Invalid email format.";
+        isValid = false;
+      }
+
+      // Password validation
+      const password = document.getElementById("password").value.trim();
+      if (password === "") {
+        document.getElementById("passwordError").textContent = "Password is required.";
+        isValid = false;
+      } else if (password.length < 6) {
+        document.getElementById("passwordError").textContent = "Password must be at least 6 characters long.";
+        isValid = false;
+      }
+
+      // Age validation
+      const age = document.getElementById("age").value.trim();
+      if (age === "") {
+        document.getElementById("ageError").textContent = "Age is required.";
+        isValid = false;
+      } else if (isNaN(age) || age <= 0) {
+        document.getElementById("ageError").textContent = "Age must be a positive number.";
+        isValid = false;
+      }
+
+      // If all validations pass
+      if (isValid) {
+        window.location.href="second.html"
+      }
+    }
+  </script>
+  </p>
+</body>
+</html>
